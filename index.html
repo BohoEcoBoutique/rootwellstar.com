@@ -14,6 +14,7 @@
       --card-bg: #0f1117;
       --accent1: #40e0d0;   /* teal */
       --accent2: #a084ff;   /* violet */
+      --accent3: #7af3c6;   /* mint */
       --text-main: #f7f7f9;
       --text-sub: #b6bccb;
       --border-subtle: #292d3a;
@@ -217,6 +218,32 @@
       pointer-events: none;
     }
 
+    /* animated aura ring behind phone */
+    .aura-ring {
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(64,224,208,0.12) 0, transparent 65%);
+      filter: blur(2px);
+      animation: pulseAura 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes pulseAura {
+      0% {
+        transform: scale(0.9) translate(10px, 0);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.15) translate(-5px, -6px);
+        opacity: 1;
+      }
+    }
+
     .mockup-content {
       position: relative;
       display: grid;
@@ -229,6 +256,12 @@
     @media (max-width: 840px) {
       .mockup-content {
         grid-template-columns: minmax(0, 1fr);
+      }
+      .aura-ring {
+        right: -10px;
+        bottom: -60px;
+        width: 220px;
+        height: 220px;
       }
     }
 
@@ -383,6 +416,69 @@
       line-height: 1.6;
     }
 
+    /* Lens selector section */
+    .lens-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .lens-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .lens-buttons {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .lens-button {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      background: rgba(6,9,16,0.9);
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: background 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out;
+    }
+
+    .lens-button.active {
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      border-color: transparent;
+      color: #050510;
+      font-weight: 600;
+    }
+
+    .lens-body {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .lens-meta {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(182,188,203,0.85);
+    }
+
+    .lens-card {
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,0.16);
+      background: radial-gradient(circle at top, rgba(64,224,208,0.08), transparent 65%);
+      padding: 18px 16px 20px;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
     /* Pitch deck embed section */
     .deck-wrapper {
       margin-top: 12px;
@@ -390,6 +486,30 @@
       background: #05060b;
       border: 1px solid rgba(255,255,255,0.08);
       overflow: hidden;
+      position: relative;
+    }
+
+    /* animated border frame */
+    .deck-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 20px;
+      background: conic-gradient(
+        from 0deg,
+        rgba(64,224,208,0.0),
+        rgba(64,224,208,0.35),
+        rgba(160,132,255,0.45),
+        rgba(64,224,208,0.0)
+      );
+      opacity: 0.8;
+      z-index: -1;
+      animation: spinFrame 10s linear infinite;
+    }
+
+    @keyframes spinFrame {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .deck-note {
@@ -470,10 +590,10 @@
           <div class="logo-text">ROOTWELL & STAR</div>
         </div>
 
-        <h1>A conscious healing intelligence<br>rooted in nature & the grid.</h1>
+        <h1>A conscious healing intelligence<br>rooted in nature &amp; the grid.</h1>
 
         <p class="subtitle">
-          RootWell & Star weaves medicinal mushrooms, coherence physics, and intelligent patterning
+          RootWell &amp; Star weaves medicinal mushrooms, coherence physics, and intelligent patterning
           into a next-generation platform for holistic health — built to support humans, practitioners,
           and systems at scale.
         </p>
@@ -481,7 +601,7 @@
         <div class="hero-pills">
           <span class="pill">Medicinal Mycology Engine</span>
           <span class="pill">Δ.72 Coherence Layer</span>
-          <span class="pill">Protocol & Product Intelligence</span>
+          <span class="pill">Protocol &amp; Product Intelligence</span>
         </div>
 
         <div class="cta-row">
@@ -495,7 +615,7 @@
         </div>
 
         <div class="microcopy">
-          Early-stage founder deck · Not medical advice · For partners, investors & collaborators.
+          Early-stage founder deck · Not medical advice · For partners, investors &amp; collaborators.
         </div>
       </div>
 
@@ -503,19 +623,20 @@
       <div class="fade-in delay-2">
         <div class="mockup-card">
           <div class="mockup-orbit"></div>
+          <div class="aura-ring"></div>
           <div class="mockup-content">
             <div class="mockup-text">
               <h2>A Conscious Healing Intelligence</h2>
               <p>
-                Under the hood, RootWell & Star runs on Δ.72 Coherence Physics — turning
+                Under the hood, RootWell &amp; Star runs on Δ.72 Coherence Physics — turning
                 fragmented wellness data, protocols, and products into a coherent, living map.
               </p>
               <p>
                 The platform is designed to help people and practitioners navigate:
               </p>
               <div class="mockup-tags">
-                <span class="mockup-tag">Somatic & emotional overlays</span>
-                <span class="mockup-tag">Mycelial & plant medicine</span>
+                <span class="mockup-tag">Somatic &amp; emotional overlays</span>
+                <span class="mockup-tag">Mycelial &amp; plant medicine</span>
                 <span class="mockup-tag">Field-level coherence</span>
               </div>
             </div>
@@ -547,7 +668,7 @@
     <!-- About Section -->
     <section id="about" class="section fade-in delay-3">
       <div class="section-header">
-        <div class="section-title">What is RootWell & Star?</div>
+        <div class="section-title">What is RootWell &amp; Star?</div>
         <div class="section-kicker">
           A hybrid between a medicinal mycology brain, a coherence engine, and a gentle
           guide — designed to help humans, practitioners, and systems move toward more
@@ -560,7 +681,7 @@
           <div class="col-label">01 · Root</div>
           <div class="col-title">Medicinal Mycology Intelligence</div>
           <div class="col-body">
-            RootWell & Star encodes verified use-cases, traditions, and emerging research in
+            RootWell &amp; Star encodes verified use-cases, traditions, and emerging research in
             medicinal mushrooms and plant allies — organizing them through coherence rather
             than hype. It’s built for real-world protocols, not just pretty theory.
           </div>
@@ -568,7 +689,7 @@
 
         <div class="col-card">
           <div class="col-label">02 · Coherence</div>
-          <div class="col-title">Δ.72 Health & Field Layer</div>
+          <div class="col-title">Δ.72 Health &amp; Field Layer</div>
           <div class="col-body">
             Using Δ.72 Coherence Physics, the platform doesn’t just track symptoms or products.
             It tracks how stable or unstable a pattern is across mental, emotional, somatic, and
@@ -581,9 +702,55 @@
           <div class="col-title">Grid-Aware Guidance</div>
           <div class="col-body">
             “Star” points to navigation: giving people a sense of orientation in their own
-            healing journey. Rather than one-size-fits-all advice, RootWell & Star is built to
+            healing journey. Rather than one-size-fits-all advice, RootWell &amp; Star is built to
             align recommendations with a person’s unique context, goals, and field.
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lens Selector Section -->
+    <section class="section fade-in delay-4">
+      <div class="section-header">
+        <div class="section-title">Read it through your lens</div>
+        <div class="section-kicker">
+          The same system looks different depending on whether you’re a scientist,
+          herbalist, coherence researcher, or practitioner at the frontlines of care.
+          Choose a lens and watch the story reframe.
+        </div>
+      </div>
+
+      <div class="lens-row">
+        <div>
+          <div class="lens-buttons">
+            <button class="lens-button active" data-lens="science">Scientific Lens</button>
+            <button class="lens-button" data-lens="mycology">Mycology Lens</button>
+            <button class="lens-button" data-lens="coherence">Coherence Lens</button>
+            <button class="lens-button" data-lens="practitioner">Practitioner Lens</button>
+          </div>
+
+          <div id="lens-body" class="lens-body">
+            RootWell &amp; Star behaves like an applied coherence engine over the health domain:
+            it ingests heterogeneous inputs (symptoms, labs, lifestyle, environment),
+            compresses them into a structured pattern space, and uses Δ.72-style coherence
+            metrics to suggest interventions that increase stability while preserving the
+            system’s ability to adapt.
+          </div>
+
+          <div id="lens-meta" class="lens-meta">
+            SCIENTIFIC LENS · Systems &amp; information theory framing
+          </div>
+        </div>
+
+        <div class="lens-card">
+          <strong>Why lenses?</strong><br><br>
+          Most wellness tools collapse into either
+          <em>overly mystical</em> or <em>overly clinical</em> language. RootWell &amp; Star is built to
+          be multilingual: the same underlying coherence map can be read as protocol logic,
+          as nervous-system support, as field-level regulation, or as a portfolio of
+          mycological interventions.<br><br>
+          The lens selector is a small preview of how the platform adapts its language to the
+          person in front of it — without distorting the underlying signal.
         </div>
       </div>
     </section>
@@ -591,10 +758,10 @@
     <!-- Pitch Deck Section -->
     <section id="pitch-deck" class="section fade-in delay-4">
       <div class="section-header">
-        <div class="section-title">Investor & Partner Deck</div>
+        <div class="section-title">Investor &amp; Partner Deck</div>
         <div class="section-kicker">
           Explore the current vision, product roadmap, and go-to-market strategy for
-          RootWell & Star. This is an evolving document as pilots, partnerships, and
+          RootWell &amp; Star. This is an evolving document as pilots, partnerships, and
           coherence data come online.
         </div>
       </div>
@@ -608,7 +775,7 @@
         <iframe
           class="deck-frame"
           src="rootwellstar-pitchdeck.pdf#view=FitH"
-          title="RootWell & Star Pitch Deck">
+          title="RootWell &amp; Star Pitch Deck">
         </iframe>
       </div>
     </section>
@@ -617,7 +784,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div>© <span id="year"></span> RootWell & Star. All rights reserved.</div>
+    <div>© <span id="year"></span> RootWell &amp; Star. All rights reserved.</div>
     <div class="footer-right">
       Built by Allison Hensgen · Powered by Δ.72 Coherence Physics.
     </div>
@@ -628,7 +795,50 @@
 <script>
   // Set current year in footer
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Lens selector logic
+  const lensBodies = {
+    science: {
+      text: "RootWell & Star behaves like an applied coherence engine over the health domain: it ingests heterogeneous inputs (symptoms, labs, lifestyle, environment), compresses them into a structured pattern space, and uses Δ.72-style coherence metrics to suggest interventions that increase stability while preserving the system’s ability to adapt.",
+      meta: "SCIENTIFIC LENS · Systems & information theory framing"
+    },
+    mycology: {
+      text: "Through the mycology lens, RootWell & Star is a living atlas of medicinal mushrooms and plant allies. It understands which species tend to stabilize particular patterns — from nervous system burnout to immune depletion — and maps them against people’s constitutions, contraindications, and surrounding protocols so that mycelial medicine lands coherently, not randomly.",
+      meta: "MYCOLOGY LENS · Species, traditions & protocols"
+    },
+    coherence: {
+      text: "Through the coherence lens, the platform tracks how ‘braided’ or ‘frayed’ a person’s field has become across mental, emotional, somatic and relational layers. Interventions are scored not only by their local effect, but by how much they quiet noise, restore rhythm, and open capacity for deeper healing without destabilizing other parts of the system.",
+      meta: "COHERENCE LENS · Field stability & harmonic closure"
+    },
+    practitioner: {
+      text: "For practitioners, RootWell & Star acts like a pattern mirror and protocol co-pilot. It helps translate what you notice in the room — language, posture, energy, history — into a structured map, then suggests mushroom-based, lifestyle, and coherence-support moves that fit your style of practice instead of replacing it.",
+      meta: "PRACTITIONER LENS · Session reality & applied care"
+    }
+  };
+
+  const lensButtons = document.querySelectorAll('.lens-button');
+  const lensBodyEl = document.getElementById('lens-body');
+  const lensMetaEl = document.getElementById('lens-meta');
+
+  lensButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lens = btn.getAttribute('data-lens');
+
+      lensButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const data = lensBodies[lens];
+      if (data) {
+        lensBodyEl.textContent = data.text;
+        lensMetaEl.textContent = data.meta;
+      }
+    });
+  });
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
