@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RootWell & Star – For Practitioners & Clinics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-top: #02151a;
+      --bg-bottom: #0b1015;
+      --gold: #e7cf96;
+      --mint: #9ff7e0;
+      --text: #f7f7f7;
+      --card: rgba(5, 16, 22, 0.96);
+      --border-soft: rgba(231, 207, 150, 0.32);
+      --shadow-soft: 0 26px 70px rgba(0, 0, 0, 0.7);
+      --radius-xl: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #04313a 0, #020509 45%, #010204 100%);
+      padding: 32px 16px 40px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: radial-gradient(circle at top, #0f3137 0, #050910 50%, #020305 100%);
+      border-radius: 40px;
+      padding: 28px 24px 26px;
+      border: 1px solid rgba(231, 207, 150, 0.35);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -140px;
+      background:
+        radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.14) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(231, 207, 150, 0.18) 0, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 20px;
+      background: radial-gradient(circle at 30% 0%, #fdf7dd 0, #e2c887 24%, #98733e 65%, #23170a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 74%;
+      height: 74%;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text span:first-child {
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245, 244, 236, 0.82);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(222, 231, 228, 0.8);
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: var(--mint);
+    }
+
+    .nav-pill {
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 247, 224, 0.7);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.16), rgba(0, 8, 7, 0.9));
+      color: rgba(241, 254, 248, 0.95);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    main {
+      position: relative;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .hero {
+      max-width: 640px;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(214, 222, 219, 0.9);
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 2.7vw, 2.4rem);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: var(--mint);
+    }
+
+    .hero p {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: rgba(235, 243, 240, 0.9);
+      margin-bottom: 16px;
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .hero-list li {
+      font-size: 0.9rem;
+      color: rgba(223, 236, 232, 0.96);
+    }
+
+    .hero-list li::before {
+      content: "•";
+      color: var(--mint);
+      margin-right: 6px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 247, 224, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.26), #061511);
+      color: #021211;
+      font-size: 0.84rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65);
+    }
+
+    .btn-primary span {
+      color: #021412;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px dashed rgba(231, 207, 150, 0.6);
+      background: rgba(4, 11, 13, 0.9);
+      color: rgba(236, 226, 199, 0.96);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .cta-caption {
+      font-size: 0.78rem;
+      color: rgba(197, 212, 208, 0.9);
+    }
+
+    .side-card {
+      position: relative;
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 22px 44px rgba(0, 0, 0, 0.75);
+      overflow: hidden;
+    }
+
+    .side-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.18) 0, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(231, 207, 150, 0.18) 0, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .side-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(214, 222, 219, 0.9);
+      margin-bottom: 6px;
+      position: relative;
+    }
+
+    .side-card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      position: relative;
+    }
+
+    .side-card p {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: rgba(224, 235, 232, 0.96);
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .pill-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 6px;
+      position: relative;
+    }
+
+    .pill-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: rgba(223, 235, 231, 0.98);
+    }
+
+    .pill-label {
+      font-weight: 500;
+    }
+
+    .pill-note {
+      font-size: 0.78rem;
+      color: rgba(188, 204, 201, 0.96);
+      text-align: right;
+    }
+
+    .sections {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card-block {
+      position: relative;
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(84, 111, 108, 0.9);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-block h3 {
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+      color: #fdfaf3;
+    }
+
+    .card-block p {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: rgba(222, 234, 231, 0.98);
+    }
+
+    .card-block ul {
+      margin-top: 8px;
+      padding-left: 18px;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: rgba(214, 227, 224, 0.96);
+    }
+
+    .faq {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(63, 86, 84, 0.9);
+    }
+
+    .faq h3 {
+      font-size: 0.94rem;
+      margin-bottom: 8px;
+    }
+
+    .faq-item {
+      margin-bottom: 8px;
+    }
+
+    .faq-q {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: rgba(232, 242, 239, 0.98);
+      margin-bottom: 2px;
+    }
+
+    .faq-a {
+      font-size: 0.82rem;
+      color: rgba(202, 215, 212, 0.98);
+      line-height: 1.6;
+    }
+
+    footer {
+      position: relative;
+      margin-top: 26px;
+      font-size: 0.78rem;
+      color: rgba(196, 209, 206, 0.85);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(68, 90, 88, 0.8);
+      padding-top: 10px;
+    }
+
+    footer a {
+      color: rgba(206, 238, 232, 0.94);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="logo-row">
+        <div class="logo-mark">
+          <!-- Use your actual icon filename here (no spaces is safest) -->
+          <img src="rootwellstar-shape.png" alt="RootWell & Star icon" />
+        </div>
+        <div class="logo-text">
+          <span>RootWell &amp; Star</span>
+          <span>A Conscious Healing Intelligence</span>
+        </div>
+      </div>
+      <nav>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="layers.html">Layers</a>
+        <a class="nav-link" href="science.html">Science</a>
+        <a
+          class="nav-pill"
+          href="rootwellstar-pitchdeck-updated.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Pitch Deck
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="layout">
+        <!-- LEFT COLUMN: HERO COPY -->
+        <section class="hero">
+          <div class="hero-kicker">For practitioners &amp; clinics</div>
+          <h1>
+            A calm, intelligent companion
+            <span>for your practice and your patients.</span>
+          </h1>
+          <p>
+            RootWell &amp; Star is built for practitioners who move between
+            science, nature, and spirit. It weaves medicinal mushrooms,
+            coherence physics, and protocol intelligence into a quietly powerful
+            interface that helps you see the whole human, not just the symptom.
+          </p>
+
+          <ul class="hero-list">
+            <li>Translate complex stories into clear, trackable healing arcs.</li>
+            <li>Design and refine protocols that honour both data and intuition.</li>
+            <li>Offer patients a gentle, guided experience between sessions.</li>
+          </ul>
+
+          <div class="cta-row">
+            <a
+              class="btn-primary"
+              href="mailto:allison@cambridgenc.com?subject=RootWell%20%26%20Star%20%7C%20Practitioner%20Early%20Access&body=Hi%20Allison%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20RootWell%20%26%20Star%20for%20my%20practice.%0A%0AName%3A%0APractice%20type%3A%0ALocation%3A%0ANumber%20of%20clients%3A%0A%0AWhat%20I%27m%20most%20curious%20about%3A%0A%0AWith%20care%2C"
+            >
+              <span>Apply for early access</span>
+            </a>
+            <a
+              class="btn-secondary"
+              href="rootwellstar-pitchdeck-updated.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download practitioner deck
+            </a>
+          </div>
+          <p class="cta-caption">
+            Early-stage access: limited spots for clinics, integrative centres,
+            and independent practitioners who want to co-design the platform.
+          </p>
+        </section>
+
+        <!-- RIGHT COLUMN: SNAPSHOT CARD -->
+        <aside class="side-card">
+          <div class="side-kicker">At a glance</div>
+          <h2>What RootWell &amp; Star can do in your practice</h2>
+          <p>
+            Think of it as a quiet, behind-the-scenes intelligence that listens
+            with you. RootWell &amp; Star does not replace your judgment – it
+            amplifies it.
+          </p>
+
+          <ul class="pill-list">
+            <li class="pill-item">
+              <span class="pill-label">Session Companion</span>
+              <span class="pill-note">guided prompts &amp; pattern notes</span>
+            </li>
+            <li class="pill-item">
+              <span class="pill-label">Protocol Canvas</span>
+              <span class="pill-note">design, adjust &amp; track over time</span>
+            </li>
+            <li class="pill-item">
+              <span class="pill-label">Mycology Insight</span>
+              <span class="pill-note">mushroom stacks, cautions, synergies</span>
+            </li>
+            <li class="pill-item">
+              <span class="pill-label">Coherence Signals</span>
+              <span class="pill-note">where the system is stabilising – or not</span>
+            </li>
+            <li class="pill-item">
+              <span class="pill-label">Patient Journey View</span>
+              <span class="pill-note">from “scattered” to “coherent” in one view</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <!-- SECOND ROW OF SECTIONS -->
+      <section class="sections">
+        <div class="card-block">
+          <h3>Who RootWell &amp; Star is designed for</h3>
+          <p>
+            The platform is especially aligned with practitioners who already
+            work across multiple layers of the human system and want a tool that
+            respects that depth.
+          </p>
+          <ul>
+            <li>Integrative, functional, and naturopathic clinics</li>
+            <li>Herbalists, mycologists, and holistic nutritionists</li>
+            <li>Somatic therapists, trauma-informed coaches, and energy workers</li>
+            <li>Retreat centres and regenerative healing spaces</li>
+          </ul>
+          <p style="margin-top:8px;">
+            If your work is part science, part art, part ceremony, RootWell &amp;
+            Star is being built with you in mind.
+          </p>
+        </div>
+
+        <div class="card-block">
+          <h3>What a patient journey can look like</h3>
+          <p>
+            Here’s a simple example of how RootWell &amp; Star might weave into
+            your current flow:
+          </p>
+          <ul>
+            <li><strong>1. Intake:</strong> you capture the story as you already do – RW&amp;S helps structure the key coherence points.</li>
+            <li><strong>2. Protocol:</strong> co-create a mushroom-forward plan (plus lifestyle / light / breath) inside the app.</li>
+            <li><strong>3. Between sessions:</strong> patients receive gentle check-ins, reflections, and tracking prompts – not noisy notifications.</li>
+            <li><strong>4. Review:</strong> you open a coherence view that shows what is stabilising, what is noisy, and where to adjust next.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ / CLARITY -->
+      <section class="faq">
+        <h3>Common questions from practitioners</h3>
+
+        <div class="faq-item">
+          <div class="faq-q">Is RootWell &amp; Star a diagnostic tool?</div>
+          <div class="faq-a">
+            No. RootWell &amp; Star does not diagnose, treat, or prescribe.
+            It organises information, surfaces coherence patterns, and supports
+            your existing clinical judgment. All decisions remain with you and
+            your client.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Do I have to change my current tools?</div>
+          <div class="faq-a">
+            Not at all. Early versions are designed to sit alongside what you
+            already use – paper notes, EHR systems, or custom spreadsheets –
+            and give you a cleaner, more intuitive view of the same reality.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How will pricing work for practitioners?</div>
+          <div class="faq-a">
+            The current plan is a freemium base with practitioner tiers for
+            deeper features: multi-client dashboards, protocol templates,
+            white-labeled journeys, and access to aligned product partners.
+            Early collaborators will receive preferred pricing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What does “coherence” actually mean here?</div>
+          <div class="faq-a">
+            In this context, coherence is a way of tracking how stable and
+            life-giving a pattern is across time – emotionally, physiologically,
+            and relationally. The Δ.72 Coherence Layer gives us language for
+            that without collapsing into purely mechanical or purely mystical
+            frames.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>
+        © RootWell &amp; Star – Early-stage research platform. Not medical advice or a substitute
+        for licensed care.
+      </span>
+      <span>
+        Back to <a href="index.html">home</a> · Explore the <a href="layers.html">architecture</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
