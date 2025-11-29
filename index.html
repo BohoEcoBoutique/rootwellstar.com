@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RootWell & Star</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Basic SEO -->
-  <meta name="description" content="RootWell & Star is a hybrid medicinal mycology and coherence-intelligence platform for next-generation holistic health. Powered by Δ.72 Coherence Physics.">
-
+  <meta charset="UTF-8" />
+  <title>RootWell & Star – A Conscious Healing Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #05070a;
-      --card-bg: #0f1117;
-      --accent1: #40e0d0;   /* teal */
-      --accent2: #a084ff;   /* violet */
-      --accent3: #7af3c6;   /* mint */
-      --text-main: #f7f7f9;
-      --text-sub: #b6bccb;
-      --border-subtle: #292d3a;
-      --pill-bg: rgba(255,255,255,0.04);
-      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.5);
-      --radius-xl: 22px;
+      --bg-top: #022a30;
+      --bg-bottom: #a8874e;
+      --gold: #e7cf96;
+      --mint: #9ff7e0;
+      --text: #f7f7f7;
+      --card: rgba(5, 16, 22, 0.92);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --radius-xl: 28px;
     }
 
     * {
@@ -30,815 +23,444 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-                   "Inter", "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020308 55%, #000 100%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      padding: 0;
-      margin: 0;
-    }
-
-    .page {
       min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top left, #144b4d 0, #02070b 50%, #010204 100%);
       display: flex;
-      flex-direction: column;
-    }
-
-    .hero {
-      padding: 72px 20px 40px;
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 48px;
       align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
     }
 
-    @media (max-width: 840px) {
-      .hero-inner {
+    .shell {
+      max-width: 1120px;
+      width: 100%;
+      background: radial-gradient(circle at top, #12353b 0, #02070b 55%, #020406 100%);
+      border-radius: 40px;
+      padding: 32px 32px 28px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(231, 207, 150, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* soft glow edges */
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(159, 247, 224, 0.12) 0, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(231, 207, 150, 0.16) 0, transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      z-index: 1;
+    }
+
+    @media (max-width: 880px) {
+      .content {
         grid-template-columns: minmax(0, 1fr);
+      }
+      .shell {
+        padding: 24px 20px 22px;
+        border-radius: 28px;
       }
     }
 
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .badge {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: var(--pill-bg);
-      color: var(--text-sub);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-    }
+    /* left: logo + copy */
 
     .logo-lockup {
-      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
     }
 
-    .logo-text {
-      font-size: 0.85rem;
+    .logo-mark {
+      width: 62px;
+      height: 62px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 30% 0%, #fdf7dd 0, #e2c887 22%, #98733e 65%, #23170a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+
+    .logo-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.3em;
-      color: var(--text-sub);
+      color: var(--gold);
     }
 
-    h1 {
-      font-size: clamp(2.4rem, 3.4vw, 3.4rem);
-      line-height: 1.08;
-      margin-bottom: 16px;
-      background: linear-gradient(120deg, #e5e7ff, #b3f8f0);
-      -webkit-background-clip: text;
-      color: transparent;
+    .brand-tagline {
+      font-size: 0.85rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245, 244, 236, 0.78);
     }
 
-    .subtitle {
-      font-size: 1.05rem;
+    .hero-heading {
+      margin-top: 10px;
+      font-size: clamp(2.2rem, 3.1vw, 2.7rem);
+      line-height: 1.25;
+      color: #fdfaf2;
+    }
+
+    .hero-heading span {
+      color: var(--mint);
+    }
+
+    .hero-sub {
+      margin-top: 16px;
+      font-size: 0.98rem;
       line-height: 1.6;
-      color: var(--text-sub);
-      max-width: 520px;
-      margin-bottom: 24px;
+      color: rgba(245, 244, 236, 0.85);
+      max-width: 34rem;
     }
 
-    .hero-pills {
+    .pill-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
+      gap: 8px;
+      margin-top: 20px;
     }
 
     .pill {
-      font-size: 0.8rem;
-      padding: 7px 14px;
       border-radius: 999px;
-      background: var(--pill-bg);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: var(--text-sub);
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(159, 247, 224, 0.6);
+      color: rgba(242, 255, 250, 0.92);
+      background: radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.18), rgba(1, 10, 9, 0.7));
+      backdrop-filter: blur(12px);
     }
 
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       gap: 10px;
-      padding: 13px 24px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      color: #050510;
-      font-weight: 600;
-      font-size: 0.98rem;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 14px 35px rgba(89, 191, 255, 0.35);
-      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out;
+      margin-top: 26px;
+      align-items: center;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 18px 45px rgba(89, 191, 255, 0.45);
-    }
-
-    .btn-secondary {
+    .primary-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 11px 18px;
+      padding: 11px 20px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(7,9,15,0.8);
-      color: var(--text-sub);
-      font-size: 0.9rem;
+      background: linear-gradient(135deg, #9ff7e0, #e7cf96);
+      color: #041013;
+      font-weight: 600;
+      font-size: 0.92rem;
       text-decoration: none;
+      border: none;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.55);
       cursor: pointer;
-      transition: background 0.15s ease-out, border-color 0.15s ease-out;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      white-space: nowrap;
     }
 
-    .btn-secondary:hover {
-      background: rgba(18,22,33,0.9);
-      border-color: rgba(255,255,255,0.35);
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.6);
+      filter: brightness(1.04);
     }
 
-    .microcopy {
-      font-size: 0.8rem;
-      color: var(--text-sub);
-      opacity: 0.75;
+    .secondary-link {
+      font-size: 0.88rem;
+      color: rgba(226, 238, 235, 0.85);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: rgba(226, 238, 235, 0.55);
     }
 
-    /* Right column: mockup card */
-    .mockup-card {
-      background: radial-gradient(circle at top left, #1a2237 0, #090b12 55%, #05070b 100%);
+    .tiny-note {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: rgba(214, 222, 219, 0.7);
+    }
+
+    /* right: card with logo + preview */
+
+    .preview-card {
+      background: var(--card);
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(255,255,255,0.06);
+      padding: 18px 18px 16px;
       box-shadow: var(--shadow-soft);
-      padding: 22px 20px;
+      border: 1px solid rgba(231, 207, 150, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       position: relative;
       overflow: hidden;
-      min-height: 260px;
     }
 
-    .mockup-orbit {
-      position: absolute;
-      inset: -120px;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(64,224,208,0.10), transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(160,132,255,0.18), transparent 55%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    /* animated aura ring behind phone */
-    .aura-ring {
-      position: absolute;
-      right: -40px;
-      bottom: -40px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(64,224,208,0.12) 0, transparent 65%);
-      filter: blur(2px);
-      animation: pulseAura 8s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-
-    @keyframes pulseAura {
-      0% {
-        transform: scale(0.9) translate(10px, 0);
-        opacity: 0.6;
-      }
-      100% {
-        transform: scale(1.15) translate(-5px, -6px);
-        opacity: 1;
-      }
-    }
-
-    .mockup-content {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 18px;
-      align-items: center;
-      z-index: 1;
-    }
-
-    @media (max-width: 840px) {
-      .mockup-content {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .aura-ring {
-        right: -10px;
-        bottom: -60px;
-        width: 220px;
-        height: 220px;
-      }
-    }
-
-    .mockup-text h2 {
-      font-size: 1.02rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #e5e7ff;
-      margin-bottom: 6px;
-    }
-
-    .mockup-text p {
-      font-size: 0.86rem;
-      color: var(--text-sub);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .mockup-tags {
+    .preview-top-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    .mockup-tag {
-      font-size: 0.74rem;
+    .preview-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .preview-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(3, 8, 10, 0.9);
+    }
+
+    .preview-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .preview-title {
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245, 244, 236, 0.9);
+    }
+
+    .preview-sub {
+      font-size: 0.72rem;
+      color: rgba(214, 222, 219, 0.8);
+    }
+
+    .pill-mini {
+      font-size: 0.68rem;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(4,7,16,0.85);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text-sub);
+      border: 1px solid rgba(159, 247, 224, 0.7);
+      color: rgba(225, 255, 246, 0.92);
+      background: radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.18), rgba(1, 10, 9, 0.82));
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      white-space: nowrap;
     }
 
-    .device-shell {
-      width: 100%;
-      max-width: 240px;
-      margin: 0 auto;
-      border-radius: 34px;
-      padding: 8px;
-      background: radial-gradient(circle at top, #202637, #05060b);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-    }
-
-    .device-inner {
-      border-radius: 26px;
+    .preview-main {
+      position: relative;
+      border-radius: 22px;
       overflow: hidden;
-      background: #050509;
-      border: 1px solid rgba(0,0,0,0.6);
-      aspect-ratio: 9 / 19;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
+      border: 1px solid rgba(53, 93, 93, 0.8);
+      background: radial-gradient(circle at top, #18363c 0, #05090c 55%, #020304 100%);
     }
 
-    .device-gradient {
+    .preview-main img {
+      display: block;
       width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at top, rgba(64,224,208,0.35), transparent 55%),
-        radial-gradient(circle at bottom, rgba(160,132,255,0.4), transparent 55%);
+      height: auto;
+      object-fit: cover;
+      transform: translateY(0);
+    }
+
+    .preview-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 10px 12px 11px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0));
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 16px;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    .device-text {
+    .preview-overlay span {
+      font-size: 0.78rem;
+      color: rgba(245, 244, 236, 0.92);
+    }
+
+    .preview-overlay button {
+      border-radius: 999px;
+      border: none;
+      padding: 5px 12px;
       font-size: 0.74rem;
-      text-align: center;
-      color: #e7ebff;
-      line-height: 1.6;
+      font-weight: 600;
+      background: linear-gradient(135deg, #9ff7e0, #e7cf96);
+      color: #041013;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.65);
+      white-space: nowrap;
     }
 
-    /* Main content section */
-    .content {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 10px 20px 60px;
+    .preview-overlay button:hover {
+      filter: brightness(1.05);
     }
 
-    .section {
-      margin-top: 40px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      background: linear-gradient(135deg, rgba(10,12,20,0.96), rgba(6,8,14,0.98));
-      padding: 26px 22px 26px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-    }
-
-    .section-header {
+    .preview-foot {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 18px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
+      align-items: center;
+      font-size: 0.7rem;
+      color: rgba(190, 205, 202, 0.85);
+      margin-top: 2px;
     }
 
-    .section-title {
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #e5e7ff;
+    .preview-foot strong {
+      color: rgba(227, 241, 237, 0.95);
     }
 
-    .section-kicker {
-      font-size: 0.86rem;
-      color: var(--text-sub);
-      max-width: 420px;
+    .preview-foot span {
+      opacity: 0.8;
     }
 
-    /* Three columns below "What is RootWell & Star" */
-    .columns {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .preview-foot a {
+      color: rgba(206, 238, 232, 0.92);
+      text-decoration: none;
     }
 
-    @media (max-width: 900px) {
-      .columns {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    /* simple aura pulse on card */
 
-    .col-card {
-      border-radius: 16px;
-      padding: 16px 15px 18px;
-      background: radial-gradient(circle at top, rgba(64,224,208,0.07), transparent 65%);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .col-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .col-title {
-      font-size: 0.98rem;
-      margin-bottom: 6px;
-      color: #f1f3ff;
-    }
-
-    .col-body {
-      font-size: 0.86rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-    }
-
-    /* Lens selector section */
-    .lens-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 24px;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 900px) {
-      .lens-row {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .lens-buttons {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .lens-button {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 7px 14px;
-      font-size: 0.82rem;
-      background: rgba(6,9,16,0.9);
-      color: var(--text-sub);
-      cursor: pointer;
-      transition: background 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out;
-    }
-
-    .lens-button.active {
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      border-color: transparent;
-      color: #050510;
-      font-weight: 600;
-    }
-
-    .lens-body {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-
-    .lens-meta {
-      margin-top: 10px;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(182,188,203,0.85);
-    }
-
-    .lens-card {
-      border-radius: 18px;
-      border: 1px dashed rgba(255,255,255,0.16);
-      background: radial-gradient(circle at top, rgba(64,224,208,0.08), transparent 65%);
-      padding: 18px 16px 20px;
-      font-size: 0.84rem;
-      color: var(--text-sub);
-    }
-
-    /* Pitch deck embed section */
-    .deck-wrapper {
-      margin-top: 12px;
-      border-radius: 18px;
-      background: #05060b;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* animated border frame */
-    .deck-wrapper::before {
+    .preview-card::before {
       content: "";
       position: absolute;
-      inset: -2px;
-      border-radius: 20px;
-      background: conic-gradient(
-        from 0deg,
-        rgba(64,224,208,0.0),
-        rgba(64,224,208,0.35),
-        rgba(160,132,255,0.45),
-        rgba(64,224,208,0.0)
-      );
-      opacity: 0.8;
-      z-index: -1;
-      animation: spinFrame 10s linear infinite;
-    }
-
-    @keyframes spinFrame {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .deck-note {
-      padding: 10px 14px;
-      font-size: 0.78rem;
-      color: var(--text-sub);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(90deg, rgba(64,224,208,0.1), transparent);
-    }
-
-    .deck-frame {
-      width: 100%;
-      height: min(72vh, 720px);
-      border: none;
-      display: block;
-      background: #05060b;
-    }
-
-    @media (max-width: 640px) {
-      .deck-frame {
-        height: 480px;
-      }
-    }
-
-    footer {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 16px 20px 32px;
-      font-size: 0.78rem;
-      color: var(--text-sub);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin-top: 10px;
-    }
-
-    .footer-right {
-      opacity: 0.8;
-    }
-
-    /* Simple fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(6px);
-      animation: fadeInUp 0.9s ease-out forwards;
-    }
-
-    .fade-in.delay-1 { animation-delay: 0.12s; }
-    .fade-in.delay-2 { animation-delay: 0.22s; }
-    .fade-in.delay-3 { animation-delay: 0.32s; }
-    .fade-in.delay-4 { animation-delay: 0.45s; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.12) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(231, 207, 150, 0.16) 0, transparent 60%);
+      opacity: 0.5;
+      mix-blend-mode: screen;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
-<div class="page">
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner">
-
-      <!-- Left / Text -->
-      <div class="fade-in delay-1">
-        <div class="badge-row">
-          <span class="badge">
-            <span class="badge-dot"></span>
-            Hybrid Mycology × Coherence Intelligence
-          </span>
-        </div>
-
+  <main class="shell">
+    <section class="content">
+      <!-- LEFT SIDE: COPY -->
+      <div>
         <div class="logo-lockup">
-          <div class="logo-text">ROOTWELL & STAR</div>
+          <div class="logo-mark">
+            <!-- inner icon (tree + star) -->
+            <img src="rootwellstar-logo.png" alt="RootWell & Star logo icon" />
+          </div>
+          <div class="logo-text-block">
+            <div class="brand-title">RootWell &amp; Star</div>
+            <div class="brand-tagline">A Conscious Healing Intelligence</div>
+          </div>
         </div>
 
-        <h1>A conscious healing intelligence<br>rooted in nature &amp; the grid.</h1>
+        <h1 class="hero-heading">
+          Hybrid mycology × <span>coherence intelligence</span> for next-gen healing.
+        </h1>
 
-        <p class="subtitle">
-          RootWell &amp; Star weaves medicinal mushrooms, coherence physics, and intelligent patterning
-          into a next-generation platform for holistic health — built to support humans, practitioners,
-          and systems at scale.
+        <p class="hero-sub">
+          RootWell &amp; Star weaves medicinal mushrooms, Δ.72 Coherence Physics, and intelligent
+          patterning into a living map for holistic health — built for humans, practitioners, and
+          systems at scale.
         </p>
 
-        <div class="hero-pills">
-          <span class="pill">Medicinal Mycology Engine</span>
-          <span class="pill">Δ.72 Coherence Layer</span>
-          <span class="pill">Protocol &amp; Product Intelligence</span>
+        <div class="pill-row">
+          <div class="pill">Medicinal Mycology Engine</div>
+          <div class="pill">Δ.72 Coherence Layer</div>
+          <div class="pill">Protocol &amp; Product Intelligence</div>
         </div>
 
         <div class="cta-row">
-          <a class="btn-primary" href="#pitch-deck">
+          <a
+            class="primary-btn"
+            href="rootwellstar-pitchdeck-updated.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             View Investor Pitch Deck
-            <span>↗</span>
           </a>
-          <a class="btn-secondary" href="#about">
+
+          <a
+            class="secondary-link"
+            href="rootwellstar-pitchdeck-updated.pdf#page=2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             How the system works
           </a>
         </div>
 
-        <div class="microcopy">
+        <p class="tiny-note">
           Early-stage founder deck · Not medical advice · For partners, investors &amp; collaborators.
-        </div>
+        </p>
       </div>
 
-      <!-- Right / Mockup -->
-      <div class="fade-in delay-2">
-        <div class="mockup-card">
-          <div class="mockup-orbit"></div>
-          <div class="aura-ring"></div>
-          <div class="mockup-content">
-            <div class="mockup-text">
-              <h2>A Conscious Healing Intelligence</h2>
-              <p>
-                Under the hood, RootWell &amp; Star runs on Δ.72 Coherence Physics — turning
-                fragmented wellness data, protocols, and products into a coherent, living map.
-              </p>
-              <p>
-                The platform is designed to help people and practitioners navigate:
-              </p>
-              <div class="mockup-tags">
-                <span class="mockup-tag">Somatic &amp; emotional overlays</span>
-                <span class="mockup-tag">Mycelial &amp; plant medicine</span>
-                <span class="mockup-tag">Field-level coherence</span>
-              </div>
+      <!-- RIGHT SIDE: PREVIEW CARD -->
+      <aside class="preview-card">
+        <div class="preview-top-row">
+          <div class="preview-logo">
+            <img src="rootwellstar-logo.png" alt="RootWell & Star logo" />
+            <div class="preview-text">
+              <div class="preview-title">Investor Preview</div>
+              <div class="preview-sub">RootWell &amp; Star – A Conscious Healing Intelligence</div>
             </div>
-
-            <div class="device-shell">
-              <div class="device-inner">
-                <div class="device-gradient">
-                  <div class="device-text">
-                    Imagine a companion that<br>
-                    feels like a wise herbalist,<br>
-                    a systems scientist,<br>
-                    and a calm guide —<br>
-                    all in one interface.
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
+          <div class="pill-mini">Deck v1.0</div>
         </div>
-      </div>
 
-    </div>
-  </header>
-
-  <!-- MAIN CONTENT -->
-  <main class="content">
-
-    <!-- About Section -->
-    <section id="about" class="section fade-in delay-3">
-      <div class="section-header">
-        <div class="section-title">What is RootWell &amp; Star?</div>
-        <div class="section-kicker">
-          A hybrid between a medicinal mycology brain, a coherence engine, and a gentle
-          guide — designed to help humans, practitioners, and systems move toward more
-          stable, regenerative health patterns.
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="col-card">
-          <div class="col-label">01 · Root</div>
-          <div class="col-title">Medicinal Mycology Intelligence</div>
-          <div class="col-body">
-            RootWell &amp; Star encodes verified use-cases, traditions, and emerging research in
-            medicinal mushrooms and plant allies — organizing them through coherence rather
-            than hype. It’s built for real-world protocols, not just pretty theory.
+        <div class="preview-main">
+          <!-- static graphic of first page / mock phone UI -->
+          <img src="rootwellstar-preview.png" alt="Preview of RootWell & Star pitch deck" />
+          <div class="preview-overlay">
+            <span>See market, product &amp; revenue model in 12 slides.</span>
+            <button
+              onclick="window.open('rootwellstar-pitchdeck-updated.pdf','_blank','noopener');"
+            >
+              Open Deck →
+            </button>
           </div>
         </div>
 
-        <div class="col-card">
-          <div class="col-label">02 · Coherence</div>
-          <div class="col-title">Δ.72 Health &amp; Field Layer</div>
-          <div class="col-body">
-            Using Δ.72 Coherence Physics, the platform doesn’t just track symptoms or products.
-            It tracks how stable or unstable a pattern is across mental, emotional, somatic, and
-            relational layers — and how an intervention may shift the field.
-          </div>
+        <div class="preview-foot">
+          <span><strong>Use:</strong> Warm intros, pitch calls, advisory conversations.</span>
+          <span>
+            PDF hosted on
+            <a
+              href="rootwellstar-pitchdeck-updated.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub Pages
+            </a>
+          </span>
         </div>
-
-        <div class="col-card">
-          <div class="col-label">03 · Star</div>
-          <div class="col-title">Grid-Aware Guidance</div>
-          <div class="col-body">
-            “Star” points to navigation: giving people a sense of orientation in their own
-            healing journey. Rather than one-size-fits-all advice, RootWell &amp; Star is built to
-            align recommendations with a person’s unique context, goals, and field.
-          </div>
-        </div>
-      </div>
+      </aside>
     </section>
-
-    <!-- Lens Selector Section -->
-    <section class="section fade-in delay-4">
-      <div class="section-header">
-        <div class="section-title">Read it through your lens</div>
-        <div class="section-kicker">
-          The same system looks different depending on whether you’re a scientist,
-          herbalist, coherence researcher, or practitioner at the frontlines of care.
-          Choose a lens and watch the story reframe.
-        </div>
-      </div>
-
-      <div class="lens-row">
-        <div>
-          <div class="lens-buttons">
-            <button class="lens-button active" data-lens="science">Scientific Lens</button>
-            <button class="lens-button" data-lens="mycology">Mycology Lens</button>
-            <button class="lens-button" data-lens="coherence">Coherence Lens</button>
-            <button class="lens-button" data-lens="practitioner">Practitioner Lens</button>
-          </div>
-
-          <div id="lens-body" class="lens-body">
-            RootWell &amp; Star behaves like an applied coherence engine over the health domain:
-            it ingests heterogeneous inputs (symptoms, labs, lifestyle, environment),
-            compresses them into a structured pattern space, and uses Δ.72-style coherence
-            metrics to suggest interventions that increase stability while preserving the
-            system’s ability to adapt.
-          </div>
-
-          <div id="lens-meta" class="lens-meta">
-            SCIENTIFIC LENS · Systems &amp; information theory framing
-          </div>
-        </div>
-
-        <div class="lens-card">
-          <strong>Why lenses?</strong><br><br>
-          Most wellness tools collapse into either
-          <em>overly mystical</em> or <em>overly clinical</em> language. RootWell &amp; Star is built to
-          be multilingual: the same underlying coherence map can be read as protocol logic,
-          as nervous-system support, as field-level regulation, or as a portfolio of
-          mycological interventions.<br><br>
-          The lens selector is a small preview of how the platform adapts its language to the
-          person in front of it — without distorting the underlying signal.
-        </div>
-      </div>
-    </section>
-
-    <!-- Pitch Deck Section -->
-    <section id="pitch-deck" class="section fade-in delay-4">
-      <div class="section-header">
-        <div class="section-title">Investor &amp; Partner Deck</div>
-        <div class="section-kicker">
-          Explore the current vision, product roadmap, and go-to-market strategy for
-          RootWell &amp; Star. This is an evolving document as pilots, partnerships, and
-          coherence data come online.
-        </div>
-      </div>
-
-      <div class="deck-wrapper">
-        <div class="deck-note">
-          Best viewed on desktop. You can scroll within the deck or open it in a new tab (browser PDF controls).
-        </div>
-
-        <!-- Embedded PDF – make sure the filename matches your repo -->
-        <iframe
-          class="deck-frame"
-          src="rootwellstar-pitchdeck-updated.pdf#view=FitH"
-          title="RootWell &amp; Star Pitch Deck">
-        </iframe>
-      </div>
-    </section>
-
   </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div>© <span id="year"></span> RootWell &amp; Star. All rights reserved.</div>
-    <div class="footer-right">
-      Built by Allison Hensgen · Powered by Δ.72 Coherence Physics.
-    </div>
-  </footer>
-
-</div>
-
-<script>
-  // Set current year in footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Lens selector logic
-  const lensBodies = {
-    science: {
-      text: "RootWell & Star behaves like an applied coherence engine over the health domain: it ingests heterogeneous inputs (symptoms, labs, lifestyle, environment), compresses them into a structured pattern space, and uses Δ.72-style coherence metrics to suggest interventions that increase stability while preserving the system’s ability to adapt.",
-      meta: "SCIENTIFIC LENS · Systems & information theory framing"
-    },
-    mycology: {
-      text: "Through the mycology lens, RootWell & Star is a living atlas of medicinal mushrooms and plant allies. It understands which species tend to stabilize particular patterns — from nervous system burnout to immune depletion — and maps them against people’s constitutions, contraindications, and surrounding protocols so that mycelial medicine lands coherently, not randomly.",
-      meta: "MYCOLOGY LENS · Species, traditions & protocols"
-    },
-    coherence: {
-      text: "Through the coherence lens, the platform tracks how ‘braided’ or ‘frayed’ a person’s field has become across mental, emotional, somatic and relational layers. Interventions are scored not only by their local effect, but by how much they quiet noise, restore rhythm, and open capacity for deeper healing without destabilizing other parts of the system.",
-      meta: "COHERENCE LENS · Field stability & harmonic closure"
-    },
-    practitioner: {
-      text: "For practitioners, RootWell & Star acts like a pattern mirror and protocol co-pilot. It helps translate what you notice in the room — language, posture, energy, history — into a structured map, then suggests mushroom-based, lifestyle, and coherence-support moves that fit your style of practice instead of replacing it.",
-      meta: "PRACTITIONER LENS · Session reality & applied care"
-    }
-  };
-
-  const lensButtons = document.querySelectorAll('.lens-button');
-  const lensBodyEl = document.getElementById('lens-body');
-  const lensMetaEl = document.getElementById('lens-meta');
-
-  lensButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lens = btn.getAttribute('data-lens');
-
-      lensButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const data = lensBodies[lens];
-      if (data) {
-        lensBodyEl.textContent = data.text;
-        lensMetaEl.textContent = data.meta;
-      }
-    });
-  });
-</script>
-
-</body>
-</html>
-
-
 </body>
 </html>
