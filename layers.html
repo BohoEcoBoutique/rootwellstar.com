@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RootWell & Star – Architecture Layers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-top: #02151a;
+      --bg-bottom: #0b1015;
+      --gold: #e7cf96;
+      --mint: #9ff7e0;
+      --text: #f7f7f7;
+      --card: rgba(5, 16, 22, 0.96);
+      --border-soft: rgba(231, 207, 150, 0.32);
+      --shadow-soft: 0 26px 70px rgba(0, 0, 0, 0.7);
+      --radius-xl: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #04313a 0, #020509 45%, #010204 100%);
+      padding: 32px 16px 40px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: radial-gradient(circle at top, #0f3137 0, #050910 50%, #020305 100%);
+      border-radius: 40px;
+      padding: 28px 24px 26px;
+      border: 1px solid rgba(231, 207, 150, 0.35);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: -140px;
+      background:
+        radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.14) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(231, 207, 150, 0.18) 0, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 20px;
+      background: radial-gradient(circle at 30% 0%, #fdf7dd 0, #e2c887 24%, #98733e 65%, #23170a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 74%;
+      height: 74%;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-text span:first-child {
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245, 244, 236, 0.82);
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(222, 231, 228, 0.8);
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: var(--mint);
+    }
+
+    .nav-pill {
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 247, 224, 0.7);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.16), rgba(0, 8, 7, 0.9));
+      color: rgba(241, 254, 248, 0.95);
+      text-decoration: none;
+    }
+
+    main {
+      position: relative;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .intro-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(214, 222, 219, 0.8);
+      margin-bottom: 8px;
+    }
+
+    .intro h1 {
+      font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .intro h1 span {
+      color: var(--mint);
+    }
+
+    .intro p {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: rgba(235, 243, 240, 0.9);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 960px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        align-self: stretch;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    .card {
+      position: relative;
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 18px 16px 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.12) 0, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(231, 207, 150, 0.14) 0, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(214, 222, 219, 0.9);
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin-top: 2px;
+      color: #fdfaf3;
+    }
+
+    .card h2 span {
+      color: var(--mint);
+    }
+
+    .card p {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: rgba(226, 235, 232, 0.95);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 247, 224, 0.6);
+      color: rgba(232, 249, 244, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(159, 247, 224, 0.12), rgba(3, 11, 10, 0.9));
+    }
+
+    .meta {
+      font-size: 0.78rem;
+      color: rgba(200, 214, 211, 0.9);
+      margin-top: 6px;
+    }
+
+    footer {
+      position: relative;
+      margin-top: 26px;
+      font-size: 0.78rem;
+      color: rgba(196, 209, 206, 0.85);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(68, 90, 88, 0.8);
+      padding-top: 10px;
+    }
+
+    footer a {
+      color: rgba(206, 238, 232, 0.94);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="logo-row">
+        <div class="logo-mark">
+          <!-- use your tree/star icon or logo here -->
+          <img src="RootWell & Star shape.png" alt="RootWell & Star icon" />
+        </div>
+        <div class="logo-text">
+          <span>RootWell &amp; Star</span>
+          <span>A Conscious Healing Intelligence</span>
+        </div>
+      </div>
+      <nav>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="science.html">Science</a>
+        <a class="nav-link" href="for-practitioners.html">Practitioners</a>
+        <a class="nav-pill" href="rootwellstar-pitchdeck-updated.pdf" target="_blank" rel="noopener noreferrer">
+          View Pitch Deck
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="intro-kicker">Platform architecture</div>
+        <h1>
+          Three interconnected layers, <span>one coherent healing intelligence.</span>
+        </h1>
+        <p>
+          RootWell &amp; Star is not a single app – it’s a layered intelligence stack that weaves
+          medicinal mushrooms, Δ.72 Coherence Physics, and protocol intelligence into one living
+          system. Each layer can stand alone, but together they form a conscious healing engine.
+        </p>
+      </section>
+
+      <section class="grid">
+        <!-- Layer 1 -->
+        <article class="card">
+          <div class="card-kicker">Layer 01</div>
+          <h2>Medicinal Mycology Engine</h2>
+          <p>
+            A structured atlas of medicinal mushrooms, blends, and use-cases – mapped across
+            nervous system, immune, metabolic, and emotional pathways. This layer translates
+            decades of natural medicine practice into clear, navigable options for humans and
+            practitioners.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Strain-level profiles</span>
+            <span class="chip">Stack &amp; protocol logic</span>
+            <span class="chip">Contraindication awareness</span>
+          </div>
+          <p class="meta">
+            <strong>Who it serves:</strong> humans seeking support, herbalists, naturopaths,
+            functional medicine clinics.
+          </p>
+        </article>
+
+        <!-- Layer 2 -->
+        <article class="card">
+          <div class="card-kicker">Layer 02</div>
+          <h2>Δ.72 Coherence Layer</h2>
+          <p>
+            The Δ.72 layer measures and models coherence: how stable a pattern is over time. It
+            gives the system a way to sense when a protocol, relationship, or environment is
+            actually stabilising a person – not just generating more data or noise.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Coherence scores</span>
+            <span class="chip">Instability flags</span>
+            <span class="chip">Multi-domain mapping</span>
+          </div>
+          <p class="meta">
+            <strong>Who it serves:</strong> researchers, system architects, investors who need a
+            clear “why this works” layer that sits above raw biomarkers and below spiritual language.
+          </p>
+        </article>
+
+        <!-- Layer 3 -->
+        <article class="card">
+          <div class="card-kicker">Layer 03</div>
+          <h2>Protocol &amp; Product Intelligence</h2>
+          <p>
+            This is the matchmaking layer: connecting people, protocols, and products in a way that
+            respects coherence. It can power in-app recommendations, practitioner dashboards, or a
+            marketplace where only aligned, high-coherence brands are allowed to plug in.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Adaptive protocols</span>
+            <span class="chip">Brand &amp; product matching</span>
+            <span class="chip">Marketplace intelligence</span>
+          </div>
+          <p class="meta">
+            <strong>Who it serves:</strong> aligned brands, clinics, and partners who want RootWell &amp; Star
+            to route the right people and protocols to them based on real-world coherence – not
+            hype.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>© RootWell &amp; Star – Early-stage concept stack. Not medical advice.</span>
+      <span>
+        Back to <a href="index.html">home</a> · Read the
+        <a href="rootwellstar-pitchdeck-updated.pdf" target="_blank" rel="noopener noreferrer">pitch deck</a>
+      </span>
+    </footer>
+  </div>
+</body>
+</html>
